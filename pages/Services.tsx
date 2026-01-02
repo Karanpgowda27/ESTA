@@ -28,7 +28,7 @@ const Services: React.FC = () => {
     <div className="bg-slate-950 py-24 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="text-amber-500 font-bold uppercase tracking-widest text-sm mb-4">E.S.T.A Training Excellence</div>
+          <div className="text-amber-500 font-bold uppercase tracking-widest text-sm mb-4">Exelity Training Excellence</div>
           <h1 className="text-4xl md:text-5xl font-bold font-display mb-6">MEPSC Certified <span className="text-amber-500">Job Roles</span></h1>
           <p className="text-slate-400 text-lg italic">
             "We play a crucial role by providing elite training and taking care of the complete lifecycle of a security professional."

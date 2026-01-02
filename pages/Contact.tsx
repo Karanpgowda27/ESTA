@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
     <div className="bg-slate-950 py-24 min-h-screen animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <div className="text-amber-500 font-bold uppercase tracking-widest text-sm mb-4">ESTA Admissions</div>
+          <div className="text-amber-500 font-bold uppercase tracking-widest text-sm mb-4">Exelity Admissions</div>
           <h1 className="text-4xl md:text-5xl font-bold font-display mb-6">Join the <span className="text-amber-500">Elite</span></h1>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Ready to become a certified security professional? Follow our streamlined recruitment process to start your journey at Excellities Academy.
+            Ready to become a certified security professional? Follow our streamlined recruitment process to start your journey at Exelity Academy.
           </p>
         </div>
 

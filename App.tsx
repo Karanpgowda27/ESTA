@@ -8,6 +8,7 @@ import Gallery from './pages/Gallery';
 import Clients from './pages/Clients';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import SecurityIQ from './pages/SecurityIQ';
 import AIChatBot from './components/AIChatBot';
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/iq-test" element={<SecurityIQ />} />
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/clients" element={<Clients />} />

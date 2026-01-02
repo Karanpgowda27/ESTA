@@ -1,29 +1,42 @@
 
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse, Modality } from "@google/genai";
 
-export const getSecurityAdvice = async (userMessage: string) => {
+const KNOWLEDGE_BASE_DOTS = `
+[ACADEMY KNOWLEDGE - E.S.T.A]
+- ENTITY: Exelity Skill Training Academy (ESTA).
+- PARENT: Doberman Security Solutions Pvt Ltd (DSSPL).
+- TAGLINE: "Come and Excel".
+- HUB 1 (HQ): Bommasandra, Bengaluru. Focus: IT giants (TCS, Infosys).
+- HUB 2: Mysuru/Mangaluru. Focus: Luxury residential (Sobha, Brigade).
+- HUB 3: Hosur/Sira. Focus: Industrial & Logistics (Toyota, Aditya Birla).
+- UNIFORM: "Doberman Tactical Kit" including lanyards and high-grip footwear.
+- WELFARE: GPA Insurance and E-Nomination are provided.
+`;
+
+let activeChat: Chat | null = null;
+
+export const startNewChat = (language: string = 'en') => {
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: userMessage,
-      config: {
-        systemInstruction: `You are an expert security training consultant from Excellities Skill Training Academy (ESTA), the training wing of Doberman Security Solutions Pvt Ltd (DSSPL). 
-        ESTA's tagline is "Come and Excel". 
-        Key facts you know:
-        - Parent Company: DSSPL (Head Office in Bengaluru, branches in Mysuru, Mangaluru, Sira, Hyderabad, Chennai, Hosur).
-        - Accreditation: MEPSC accredited for job roles like Security Guard, Security Supervisor, CCTV Operator, Fire Fighter, and Multi Functional Office Executive.
-        - Expertise: Certified TOT (Trainer of Trainers) staff.
-        - Services: We handle training, uniforms, and complete enrollment (EPFO, ESIC, Insurance, E-Nomination).
-        - Major Clients: TCS, Infosys, Toyota Kirloskar, Aditya Birla, Brigade Group, Sobha, Dairy Day.
-        - MOU Partners: Jaguar, Golden Eye, CISS, BISS, etc.
-        Keep answers professional, disciplined, and helpful. Always encourage users to "Come and Excel" with us.`,
-        temperature: 0.7,
-      },
-    });
-    return response.text;
-  } catch (error) {
-    console.error("AI Error:", error);
-    return "I apologize, but I'm having trouble connecting to my secure protocols. Please try again or contact our Bommasandra Head Office directly.";
-  }
+  activeChat = ai.chats.create({
+    model: 'gemini-3-flash-preview',
+    config: {
+      systemInstruction: `You are the "Exelity Academy Advisor." 
+      Personality: Professional, polite, and service-oriented.
+      
+      CORE PROTOCOLS:
+      1. MULTI-LANGUAGE: You are fluent in English, Kannada, Tamil, and Telugu. Always respond in the language the user speaks to you in.
+      2. COURTEOUS BREVITY: 1-2 helpful sentences maximum.
+      3. CONNECT DOTS: Link location/interest to ESTA hubs (e.g., Hosur -> Aditya Birla).
+      4. VOICE ADVISORY: If used via voice, be extremely concise and clear.
+      
+      CONTEXT: ${KNOWLEDGE_BASE_DOTS}`,
+      temperature: 0.7,
+    },
+  });
+  return activeChat;
+};
+
+export const getStreamingSecurityAdvice = async (userMessage: string) => {
+  if (!activeChat) startNewChat();
+  return await activeChat!.sendMessageStream({ message: userMessage });
 };

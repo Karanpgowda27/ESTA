@@ -22,7 +22,7 @@ const Gallery: React.FC = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold font-display mb-6">Academy <span className="text-amber-500">Moments</span></h1>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A visual record of our milestones, high-impact training sessions, and the achievements that define Excellities.
+            A visual record of our milestones, high-impact training sessions, and the achievements that define Exelity.
           </p>
         </div>
 

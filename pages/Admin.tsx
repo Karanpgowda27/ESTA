@@ -32,7 +32,7 @@ const Admin: React.FC = () => {
         <div className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-3xl font-bold font-display text-white">Admissions Console</h1>
-            <p className="text-slate-400 mt-1">Excellities Academy Secure Enrollment Database</p>
+            <p className="text-slate-400 mt-1">Exelity Academy Secure Enrollment Database</p>
           </div>
           <button onClick={fetchLeads} className="p-3 bg-slate-800 rounded-xl text-amber-500"><RefreshCw size={20} className={loading ? 'animate-spin' : ''} /></button>
         </div>

@@ -7,10 +7,10 @@ export interface Lead {
   service: string;
   message: string;
   timestamp: number;
-  // Recruitment specifics
   experience?: string;
   city?: string;
   education?: string;
+  iqScore?: number;
 }
 
 export enum ServiceType {
@@ -20,13 +20,13 @@ export enum ServiceType {
   SPECIALIZED = 'Specialized Security Training'
 }
 
-export interface Trainer {
+export type Language = 'en' | 'kn' | 'ta' | 'te';
+
+export interface QuizScenario {
   id: number;
-  name: string;
-  specialty: string;
-  experience: string;
+  question: string;
+  options: { text: string; points: number; feedback: string }[];
   image: string;
-  badges: string[];
 }
 
 export interface Branch {

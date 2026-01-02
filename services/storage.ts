@@ -1,7 +1,7 @@
 
 import { Lead } from '../types';
 
-const STORAGE_KEY = 'excellities_leads';
+const STORAGE_KEY = 'exelity_leads';
 
 export const saveLead = (lead: Omit<Lead, 'id' | 'timestamp'>): Lead => {
   const leads = getLeads();
