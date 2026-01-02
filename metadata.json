@@ -1,0 +1,8 @@
+{
+  "name": "Exelity Skill Training Academy",
+  "description": "A professional training academy website for Doberman Private Security Solutions, featuring service management, a lead generation system, and an AI security assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
